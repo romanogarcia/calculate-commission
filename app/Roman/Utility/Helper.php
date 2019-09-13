@@ -51,15 +51,22 @@ class Helper {
     {
         $rows = [];
 
-        if (($handle = fopen("$file", "r")) !== FALSE) 
+        if (file_exists($file)) 
         {
-            while (($data = fgetcsv($handle)) !== FALSE) 
+            if (($handle = fopen("$file", "r")) !== FALSE) 
             {
-                $rows[] = $data;
+                while (($data = fgetcsv($handle)) !== FALSE) 
+                {
+                    $rows[] = $data;
+                }
+                fclose($handle);
             }
-            fclose($handle);
+
+            return $rows;
         }
-        
-        return $rows;
+        else {
+            echo "The file [ $file ] does not exists.\n";
+            exit();
+        }
     } 
 }
