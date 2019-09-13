@@ -3,5 +3,8 @@
         "psr-4": {
             "Roman\\": "app/Roman"
         }
+    },
+    "require": {
+        "phpunit/phpunit": "^8.3"
     }
 }
